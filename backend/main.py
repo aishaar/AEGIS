@@ -1,4 +1,4 @@
-# Build the FastAPI Endpoint
+# Build FastAPI Endpoint 
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -6,7 +6,6 @@ from pydantic import BaseModel
 from core.state import create_session, SessionState
 from core.orchestrator import run_orchestrator
 import json, os, uuid
-from datetime import datetime
 
 app = FastAPI()
 
@@ -69,4 +68,4 @@ def log_session(sid: str, state: SessionState):
 
 @app.get("/health")
 def health():
-    return {"status": "AEGIS is running"} 
+    return {"status": "AEGIS is running"}

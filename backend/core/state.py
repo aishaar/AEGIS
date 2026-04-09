@@ -17,7 +17,10 @@ class SessionState(TypedDict):
     passivity_alert: bool
     need_reflection: bool
 
-def create_session(session_id: str, domain_context: str = "academic research writing") -> SessionState:
+def create_session(
+    session_id: str,
+    domain_context: str = "academic research writing"
+) -> SessionState:
     return SessionState(
         session_id=session_id,
         domain_context=domain_context,
