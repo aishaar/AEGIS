@@ -65,6 +65,32 @@ def log_session(sid: str, state: SessionState):
     path = f"logs/{sid}.json"
     with open(path, "w") as f:
         json.dump(dict(state), f, indent=2)
+    
+@app.get("/report/{session_id}")
+def get_report(session_id: str):
+    from core.assembler import compute_metrics
+
+    if session_id not in sessions:
+        path = f"logs/{session_id}.json"
+        if not os.path.exists(path):
+            return {"error": "Session not found"}
+        with open(path, "r") as f:
+            state = json.load(f)
+    else:
+        state = sessions[session_id]
+
+    metrics = compute_metrics(state)
+
+    return {
+        "session_id": session_id,
+        "turn_count": state["turn_count"],
+        "metrics": metrics,
+        "raw_events": {
+            "rpi_events": state["rpi_events"],
+            "reflection_events": state["reflection_events"],
+            "transparency_events": state["transparency_events"]
+        }
+    }
 
 @app.get("/health")
 def health():

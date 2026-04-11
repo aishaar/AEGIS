@@ -72,3 +72,63 @@ def get_engagement_level(state: SessionState) -> str:
         return "medium"
     else:
         return "high"
+
+def compute_metrics(state: dict) -> dict:
+    rpi = compute_rpi(state)
+    sur = compute_sur(state)
+    raf = compute_raf(state)
+    engagement = get_engagement_level(state)
+    stage = get_stage_label(state["scaffold_stage"])
+
+    return {
+        "rpi": rpi,
+        "sur": sur,
+        "raf": raf,
+        "engagement_level": engagement,
+        "scaffold_stage_label": stage,
+        "turn_count": state["turn_count"],
+        "interpretation": interpret_metrics(rpi, sur, raf)
+    }
+
+
+def compute_rpi(state: dict) -> float:
+    events = state["rpi_events"]
+    if not events:
+        return 0.0
+    passive = len([e for e in events if e == "passive_accept"])
+    return round(passive / len(events), 2)
+
+
+def compute_sur(state: dict) -> float:
+    sur_events = [
+        e for e in state["transparency_events"]
+        if isinstance(e, dict) and "user_engaged_before_hint" in e
+    ]
+    if not sur_events:
+        return 0.0
+    engaged = len([e for e in sur_events if e["user_engaged_before_hint"]])
+    return round(engaged / len(sur_events), 2)
+
+
+def compute_raf(state: dict) -> float:
+    events = state["reflection_events"]
+    if not events:
+        return 0.0
+    total = len([e for e in events if e in ["engaged", "skipped"]])
+    if total == 0:
+        return 0.0
+    engaged = len([e for e in events if e == "engaged"])
+    return round(engaged / total, 2)
+
+
+def interpret_metrics(rpi: float, sur: float, raf: float) -> str:
+    if rpi <= 0.2 and sur >= 0.7 and raf >= 0.7:
+        return "highly engaged — user is reasoning actively and challenging outputs"
+    elif rpi <= 0.4 and sur >= 0.5:
+        return "moderately engaged — user is thinking but could reflect more deeply"
+    elif rpi >= 0.7:
+        return "passive reliance detected — user is accepting outputs without reasoning"
+    elif sur <= 0.2:
+        return "low scaffolding uptake — user is bypassing the reasoning process"
+    else:
+        return "mixed engagement — improving but passivity patterns present"
