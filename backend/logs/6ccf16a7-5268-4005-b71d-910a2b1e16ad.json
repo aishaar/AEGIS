@@ -1,0 +1,40 @@
+{
+  "session_id": "6ccf16a7-5268-4005-b71d-910a2b1e16ad",
+  "domain_context": "academic research writing",
+  "turn_count": 1,
+  "user_has_engaged": false,
+  "scaffold_stage": 0,
+  "consecutive_passive_accepts": 1,
+  "rpi_events": [
+    "passive_accept"
+  ],
+  "reflection_events": [
+    "prompted"
+  ],
+  "transparency_events": [],
+  "interaction_history": [
+    {
+      "role": "user",
+      "content": "got it",
+      "turn": 1
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "main_response": "Which part of this feels least certain to you?",
+        "transparency": {
+          "explanation": "This response encourages reflection on the user's level of certainty regarding specific aspects of a situation.",
+          "confidence_band": "medium",
+          "what_to_verify": "Consider the context of the conversation to identify areas of uncertainty."
+        },
+        "challenge": null,
+        "reflection": null,
+        "route_used": "reflection"
+      },
+      "turn": 1
+    }
+  ],
+  "latest_turn_type": "reflection",
+  "passivity_alert": false,
+  "need_reflection": false
+}

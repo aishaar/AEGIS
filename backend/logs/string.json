@@ -1,0 +1,91 @@
+{
+  "session_id": "string",
+  "domain_context": "academic research writing",
+  "turn_count": 3,
+  "user_has_engaged": false,
+  "scaffold_stage": 0,
+  "consecutive_passive_accepts": 3,
+  "rpi_events": [
+    "passive_accept",
+    "passive_accept",
+    "passive_accept"
+  ],
+  "reflection_events": [
+    "prompted",
+    "prompted"
+  ],
+  "transparency_events": [],
+  "interaction_history": [
+    {
+      "role": "user",
+      "content": "ok",
+      "turn": 1
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "main_response": "Which part of this feels least certain to you?",
+        "transparency": {
+          "explanation": "This response encourages the user to reflect on their uncertainties, fostering a deeper exploration of their thoughts.",
+          "confidence_band": "medium",
+          "what_to_verify": "Consider the context in which the uncertainties arise."
+        },
+        "challenge": null,
+        "reflection": null,
+        "route_used": "reflection"
+      },
+      "turn": 1
+    },
+    {
+      "role": "user",
+      "content": "got it",
+      "turn": 2
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "main_response": "Does this match what you already knew about this topic?",
+        "transparency": {
+          "explanation": "The response encourages the user to reflect on their prior knowledge and understanding of the topic.",
+          "confidence_band": "medium",
+          "what_to_verify": "The accuracy of the information provided in the AI's response."
+        },
+        "challenge": null,
+        "reflection": null,
+        "route_used": "reflection"
+      },
+      "turn": 2
+    },
+    {
+      "role": "user",
+      "content": "makes sense",
+      "turn": 3
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "main_response": "Which assumption in my last response would you challenge?",
+        "transparency": {
+          "explanation": "This response encourages critical thinking and open dialogue by prompting the user to identify assumptions in previous statements.",
+          "confidence_band": "medium",
+          "what_to_verify": "The accuracy of the assumptions made in the prior response."
+        },
+        "challenge": {
+          "rpi": 1.0,
+          "sur": 0.0,
+          "raf": 0.0,
+          "consecutive_passive_accepts": 3,
+          "trigger_interrupt": true,
+          "interrupt_type": "challenge_prompt",
+          "prompt": "Which assumption in my last response would you challenge?"
+        },
+        "reflection": null,
+        "route_used": "challenge"
+      },
+      "turn": 3
+    }
+  ],
+  "latest_turn_type": "passive",
+  "passivity_alert": true,
+  "need_reflection": false
+}

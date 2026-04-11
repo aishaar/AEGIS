@@ -74,21 +74,20 @@ def detect_engagement(user_message: str) -> bool:
     return score >= 2
 
 
-def detect_passive_accept(user_message: str) -> bool:
-    msg = user_message.strip().lower()
-    passive_phrases = [
-        "ok", "okay", "got it", "thanks", "thank you",
-        "makes sense", "yes", "sure", "alright", "i see",
-        "noted", "understood", "great", "cool", "nice"
-    ]
-    short_and_passive = (
-        len(msg.split()) <= 5 and
-        any(p in msg for p in passive_phrases)
-    )
-    return short_and_passive
-
-
 async def run_orchestrator(user_message: str, state: SessionState) -> dict:
+    from agents.autonomy import label_user_turn, update_state_with_label
+
+    label = label_user_turn(user_message, state)
+    update_state_with_label(label, state)
+
+    print(f"DEBUG label={label} consecutive={state['consecutive_passive_accepts']} alert={state['passivity_alert']}")
+
+    if state["passivity_alert"]:
+        state["latest_turn_type"] = "passive"
+        response = await execute_route("challenge", user_message, state)
+        state["need_reflection"] = False
+        return response
+
     turn_type = classify_turn(
         user_message,
         state["interaction_history"]
@@ -98,18 +97,6 @@ async def run_orchestrator(user_message: str, state: SessionState) -> dict:
     engaged = detect_engagement(user_message)
     if engaged:
         state["user_has_engaged"] = True
-
-    if detect_passive_accept(user_message):
-        state["rpi_events"].append("passive_accept")
-        state["consecutive_passive_accepts"] += 1
-    else:
-        state["rpi_events"].append("active")
-        state["consecutive_passive_accepts"] = 0
-
-    if state["consecutive_passive_accepts"] >= 3:
-        state["passivity_alert"] = True
-    else:
-        state["passivity_alert"] = False
 
     route = determine_route(turn_type, state)
     response = await execute_route(route, user_message, state)
@@ -156,7 +143,7 @@ async def execute_route(
 
     if route == "challenge":
         challenge = run_autonomy(state)
-        main_response = "Let us pause for a moment."
+        main_response = challenge["prompt"]
 
     elif route == "scaffolding":
         scaffold_out = await run_scaffolding(user_message, state)
