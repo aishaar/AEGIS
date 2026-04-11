@@ -5,6 +5,7 @@ import os
 from core.state import SessionState
 from dotenv import load_dotenv
 from agents.reflection import should_trigger_reflection, record_reflection_response
+from core.assembler import assemble_response
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -182,10 +183,11 @@ async def execute_route(
     if state["need_reflection"] and route != "reflection":
         reflection = run_reflection(state)
 
-    return {
-        "main_response": main_response,
-        "transparency": transparency,
-        "challenge": challenge,
-        "reflection": reflection,
-        "route_used": route
-    }
+    return assemble_response(
+    main_response=main_response,
+    transparency=transparency,
+    challenge=challenge,
+    reflection=reflection,
+    route_used=route,
+    state=state
+)
