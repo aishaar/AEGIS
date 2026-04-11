@@ -4,6 +4,7 @@ from openai import OpenAI
 import os
 from core.state import SessionState
 from dotenv import load_dotenv
+from agents.reflection import should_trigger_reflection, record_reflection_response
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -76,9 +77,14 @@ def detect_engagement(user_message: str) -> bool:
 
 async def run_orchestrator(user_message: str, state: SessionState) -> dict:
     from agents.autonomy import label_user_turn, update_state_with_label
+    from agents.reflection import should_trigger_reflection, record_reflection_response
 
     label = label_user_turn(user_message, state)
     update_state_with_label(label, state)
+
+    if state["reflection_events"] and state["reflection_events"][-1] == "prompted":
+        is_engaged = len(user_message.split()) > 5
+        record_reflection_response(is_engaged, state)
 
     print(f"DEBUG label={label} consecutive={state['consecutive_passive_accepts']} alert={state['passivity_alert']}")
 
@@ -100,7 +106,7 @@ async def run_orchestrator(user_message: str, state: SessionState) -> dict:
 
     route = determine_route(turn_type, state)
     response = await execute_route(route, user_message, state)
-    state["need_reflection"] = state["turn_count"] % 3 == 0
+    state["need_reflection"] = should_trigger_reflection(state)
 
     return response
 
@@ -121,6 +127,8 @@ def determine_route(turn_type: str, state: SessionState) -> str:
         return "direct"
 
     if turn_type == "reflection":
+        if state["scaffold_stage"] < 2:
+            return "scaffolding"
         return "reflection"
 
     return "scaffolding"
@@ -167,6 +175,7 @@ async def execute_route(
     elif route == "reflection":
         ref_out = run_reflection(state)
         main_response = ref_out["reflection_prompt"]
+        reflection = ref_out
 
     transparency = await run_transparency(user_message, main_response, state)
 
