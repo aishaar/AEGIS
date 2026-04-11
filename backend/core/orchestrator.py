@@ -168,7 +168,7 @@ async def execute_route(
         ref_out = run_reflection(state)
         main_response = ref_out["reflection_prompt"]
 
-    transparency = await run_transparency(user_message, main_response)
+    transparency = await run_transparency(user_message, main_response, state)
 
     if state["need_reflection"] and route != "reflection":
         reflection = run_reflection(state)
