@@ -48,9 +48,15 @@ def build_prompt(stage: int, user_message: str, state: SessionState) -> tuple:
             f"Domain: {domain}\n"
             f"Recent conversation:\n{history_text}\n\n"
             f"User just asked: {user_message}\n\n"
-            "Ask ONE Socratic question to surface the user's existing "
-            "understanding before you explain anything. "
-            "Do not answer the question. One sentence only."
+            "You are a warm and encouraging learning guide. "
+            "The user is just getting started so be kind, welcoming and supportive. "
+            "Acknowledge their question warmly in one sentence, then ask ONE gentle "
+            "Socratic question to understand what they already know. "
+            "Keep it friendly and conversational — not clinical or robotic. "
+            "Do not answer the question yet. Two sentences maximum total."
+            "No bullet points, no headers, no markdown. "
+            "Plain conversational English only. "
+            "Keep it under 3 sentences."
         )
         mode = "question"
 
@@ -59,9 +65,13 @@ def build_prompt(stage: int, user_message: str, state: SessionState) -> tuple:
             f"Domain: {domain}\n"
             f"Recent conversation:\n{history_text}\n\n"
             f"User just said: {user_message}\n\n"
-            "Give a conceptual hint — not the full answer. "
-            "Point them toward the right way of thinking in 2-3 sentences. "
-            "Do not give the conclusion."
+            "You are a supportive guide and let the user know we are at Stage 2. Acknowledge what the user said positively "
+            "if they made any attempt to engage. Then give a conceptual hint — "
+            "not the full answer. Point them toward the right way of thinking "
+            "in 2-3 sentences. Be encouraging. Do not give the conclusion."
+            "No bullet points, no headers, no markdown. "
+            "Plain conversational English only. "
+            "Keep it under 3 sentences."
         )
         mode = "hint"
 
@@ -78,6 +88,9 @@ def build_prompt(stage: int, user_message: str, state: SessionState) -> tuple:
             f"Recent conversation:\n{history_text}\n\n"
             f"User just said: {user_message}\n\n"
             f"Provide full guidance now. Be thorough and clear. {direct_note}"
+            "No bullet points, no headers, no markdown. "
+            "Plain conversational English only. "
+            "Keep it under 3 sentences."    
         )
         mode = "full"
 

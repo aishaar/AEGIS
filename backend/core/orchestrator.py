@@ -1,5 +1,3 @@
-# Building the full orchestrator 
-
 from openai import OpenAI
 import os
 from core.state import SessionState
@@ -113,8 +111,21 @@ async def run_orchestrator(user_message: str, state: SessionState) -> dict:
 
 
 def determine_route(turn_type: str, state: SessionState) -> str:
+    if state["turn_count"] == 1:
+        return "welcome"
+
     if state["passivity_alert"]:
         return "challenge"
+
+    explicit_teach_phrases = [
+        "i came here to learn", "just tell me", "teach me",
+        "explain it to me", "i want to learn more from you",
+        "can you explain", "please explain", "help me understand",
+        "i want to know", "tell me more"
+    ]
+    if any(p in state["interaction_history"][-1]["content"].lower()
+           for p in explicit_teach_phrases):
+        return "direct"
 
     if turn_type in ["knowledge_seeking", "decision_making"]:
         if not state["user_has_engaged"]:
@@ -150,7 +161,27 @@ async def execute_route(
     challenge = None
     reflection = None
 
-    if route == "challenge":
+    if route == "welcome":
+        resp = client.chat.completions.create(
+            model="gpt-4o-mini",
+            max_tokens=150,
+            messages=[{
+                "role": "user",
+                "content": (
+                    f"Domain: {state['domain_context']}\n"
+                    f"User said: {user_message}\n\n"
+                    "You are AEGIS, a warm and encouraging AI learning guide. "
+                    "Welcome the user kindly, acknowledge what they want to learn, "
+                    "and let them know you will guide their thinking rather than "
+                    "just give them answers. Be warm, brief, and human. "
+                    "Then ask them one gentle opening question about what they "
+                    "already know. 3 sentences maximum."
+                )
+            }]
+        )
+        main_response = resp.choices[0].message.content
+
+    elif route == "challenge":
         challenge = run_autonomy(state)
         main_response = challenge["prompt"]
 
@@ -160,14 +191,26 @@ async def execute_route(
         state["scaffold_stage"] = scaffold_out["tier"]
 
     elif route == "direct":
+        history_text = "\n".join([
+        f"{h['role']}: {h['content']}"
+        for h in state["interaction_history"][-6:]
+        ])
         resp = client.chat.completions.create(
             model="gpt-4o-mini",
-            max_tokens=400,
+            max_tokens=200,
             messages=[{
                 "role": "user",
                 "content": (
                     f"Domain: {state['domain_context']}\n\n"
-                    f"User: {user_message}"
+                    f"Conversation so far:\n{history_text}\n\n"
+                    f"User just said: {user_message}\n\n"
+                    "The user has engaged enough and is now asking for direct teaching. "
+                    "Answer their actual question clearly and helpfully. "
+                    "Use what they have already told you about themselves to personalize your answer. "
+                    "Be concrete and practical — give them real actionable knowledge. "
+                    "No bullet points, no headers, no markdown. "
+                    "Plain conversational English. "
+                    "3 to 4 sentences maximum."
                 )
             }]
         )
@@ -184,10 +227,10 @@ async def execute_route(
         reflection = run_reflection(state)
 
     return assemble_response(
-    main_response=main_response,
-    transparency=transparency,
-    challenge=challenge,
-    reflection=reflection,
-    route_used=route,
-    state=state
-)
+        main_response=main_response,
+        transparency=transparency,
+        challenge=challenge,
+        reflection=reflection,
+        route_used=route,
+        state=state
+    )
