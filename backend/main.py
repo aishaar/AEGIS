@@ -22,13 +22,14 @@ class ChatRequest(BaseModel):
     session_id: str | None = None
     message: str
     domain_context: str = "academic research writing"
+    user_context: str = ""        # teammate's intake data: goals, background, knowledge level
 
 @app.post("/chat")
 async def chat(req: ChatRequest):
     sid = req.session_id or str(uuid.uuid4())
 
     if sid not in sessions:
-        sessions[sid] = create_session(sid, req.domain_context)
+        sessions[sid] = create_session(sid, req.domain_context, req.user_context)
 
     state = sessions[sid]
     state["turn_count"] += 1
