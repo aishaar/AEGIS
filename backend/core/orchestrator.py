@@ -208,7 +208,8 @@ async def execute_route(
                 "Let them know you will guide their thinking rather than just hand them answers. "
                 "Then ask ONE focused opening question that connects directly to their stated goal. "
                 "Do NOT ask them to repeat what they want to learn — you already know. "
-                "3 sentences maximum. Plain conversational English, no markdown."
+                "3 sentences maximum. Plain conversational English, no markdown. "
+                "Put your opening welcome on one line, then a blank line, then your question on its own line."
             )
         else:
             # No context yet — ask what they want to learn
@@ -216,7 +217,8 @@ async def execute_route(
                 "You are AEGIS, a warm and encouraging AI learning guide. "
                 "Welcome the user kindly and let them know you will guide their thinking rather than just give answers. "
                 "Then ask them one gentle opening question: what do they want to learn, and what do they already know about it? "
-                "3 sentences maximum. Plain conversational English, no markdown."
+                "3 sentences maximum. Plain conversational English, no markdown. "
+                "Put your welcome on one line, then a blank line, then your question on its own line."
             )
         resp = client.chat.completions.create(
             model="gpt-4o-mini",
@@ -280,7 +282,8 @@ async def execute_route(
                     "Be concrete and practical — give them real actionable knowledge. "
                     "No bullet points, no headers, no markdown. "
                     "Plain conversational English. "
-                    "3 to 4 sentences maximum."
+                    "3 to 4 sentences maximum. "
+                    "Separate your answer from any closing question with a blank line."
                 )
             }]
         )

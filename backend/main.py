@@ -62,10 +62,9 @@ async def chat(req: ChatRequest, current_user: User = Depends(get_current_user))
     sid = req.session_id or str(uuid.uuid4())
 
     if sid not in sessions:
-        sessions[sid] = create_session(sid, req.domain_context)
+        sessions[sid] = create_session(sid, req.domain_context, req.user_context)
         sessions[sid]["user_id"] = current_user.id
         sessions[sid]["created_at"] = __import__("datetime").datetime.utcnow().isoformat()
-        sessions[sid] = create_session(sid, req.domain_context, req.user_context)
 
     state = sessions[sid]
 

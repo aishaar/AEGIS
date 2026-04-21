@@ -215,8 +215,11 @@ export default function Home() {
         <header className="mb-6 flex items-start justify-between">
           <div>
             <h1 className="text-3xl font-bold text-[#7B2FBE]">AEGIS</h1>
-            <p className="mt-2 text-sm text-[#444441]">
-              Adaptive interface for AI interaction
+            <p className="text-xs font-medium tracking-widest text-[#7B2FBE] uppercase mt-0.5">
+              Adaptive Engine for Guided Intelligent Scaffolding
+            </p>
+            <p className="mt-1 text-sm italic text-[#888780]">
+              Think More, Depend Less
             </p>
           </div>
 

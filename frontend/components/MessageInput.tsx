@@ -13,7 +13,7 @@ export default function MessageInput({
     <div className="flex gap-3">
       <input
         type="text"
-        placeholder="Type your message..."
+        placeholder="I want to learn about..."
         value={input}
         onChange={(e) => onInputChange(e.target.value)}
         onKeyDown={(e) => {
