@@ -110,20 +110,22 @@ def compute_sur(state: dict) -> float:
     return round(engaged / len(sur_events), 2)
 
 
-def compute_raf(state: dict) -> float:
+def compute_raf(state: dict) -> float | None:
     events = state["reflection_events"]
     if not events:
-        return 0.0
+        return None  # reflection was never shown — not the same as user skipping
     total = len([e for e in events if e in ["engaged", "skipped"]])
     if total == 0:
-        return 0.0
+        return None
     engaged = len([e for e in events if e == "engaged"])
     return round(engaged / total, 2)
 
 
-def interpret_metrics(rpi: float, sur: float, raf: float) -> str:
-    if rpi <= 0.2 and sur >= 0.7 and raf >= 0.7:
+def interpret_metrics(rpi: float, sur: float, raf: float | None) -> str:
+    if rpi <= 0.2 and sur >= 0.7 and (raf is None or raf >= 0.7):
         return "highly engaged — user is reasoning actively and challenging outputs"
+    elif sur >= 0.8 and rpi <= 0.5:
+        return "strong scaffolding uptake — user is engaging well with guidance, though some passive moments remain"
     elif rpi <= 0.4 and sur >= 0.5:
         return "moderately engaged — user is thinking but could reflect more deeply"
     elif rpi >= 0.7:

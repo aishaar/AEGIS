@@ -103,7 +103,7 @@ export type MetricsReport = {
   metrics: {
     rpi: number;
     sur: number;
-    raf: number;
+    raf: number | null;
     engagement_level: string;
     scaffold_stage_label: string;
     turn_count: number;
