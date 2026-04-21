@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 # from agents.reflection import should_trigger_reflection, record_reflection_response  # reflection disabled
 from core.assembler import assemble_response
 
-load_dotenv()
+load_dotenv(override=True)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 TURN_TYPES = [
