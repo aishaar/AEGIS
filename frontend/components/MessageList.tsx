@@ -19,8 +19,8 @@ export default function MessageList({ messages }: MessageListProps) {
               key={index}
               className={
                 message.role === "user"
-                  ? "max-w-[70%] self-end rounded-2xl bg-[#7B2FBE] px-4 py-3 text-white"
-                  : "max-w-[70%] self-start rounded-2xl bg-[#EEEDFE] px-4 py-3 text-[#444441]"
+                    ? "max-w-[70%] self-end rounded-2xl bg-[#7B2FBE] px-4 py-3 text-white whitespace-pre-line"
+                    : "max-w-[70%] self-start rounded-2xl bg-[#EEEDFE] px-4 py-3 text-[#444441] whitespace-pre-line"
               }
             >
               {message.content}
