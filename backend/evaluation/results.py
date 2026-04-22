@@ -15,11 +15,11 @@ def print_detailed_report() -> None:
         return
 
     print("\nAEGIS DETAILED EVALUATION REPORT")
-    print("="*60)
+    print("=" * 60)
 
     for persona_name, data in results.items():
         print(f"\n{persona_name.upper()} PERSONA")
-        print("-"*40)
+        print("-" * 40)
 
         print("\nTurn-by-turn breakdown:")
         for turn in data["turn_results"]:
@@ -32,7 +32,7 @@ def print_detailed_report() -> None:
             )
 
         metrics = data["final_report"]["metrics"]
-        print(f"\nFinal metrics:")
+        print("\nFinal metrics:")
         print(f"  RPI = {metrics['rpi']} — {'high passivity' if metrics['rpi'] > 0.5 else 'low passivity'}")
         print(f"  SUR = {metrics['sur']} — {'good uptake' if metrics['sur'] > 0.5 else 'low uptake'}")
         print(f"  RAF = {metrics['raf']} — {'good reflection' if metrics['raf'] > 0.5 else 'low reflection'}")
@@ -40,7 +40,7 @@ def print_detailed_report() -> None:
 
     print("\nComparison table:")
     print(f"{'Persona':<12} {'RPI':>6} {'SUR':>6} {'RAF':>6} {'Engagement':<12}")
-    print("-"*45)
+    print("-" * 50)
     for persona_name, data in results.items():
         m = data["final_report"]["metrics"]
         print(

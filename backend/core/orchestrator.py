@@ -4,6 +4,7 @@ from core.state import SessionState
 from dotenv import load_dotenv
 # from agents.reflection import should_trigger_reflection, record_reflection_response  # reflection disabled
 from core.assembler import assemble_response
+from agents.persona_classifier import classify_persona_turn
 
 load_dotenv(override=True)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -107,6 +108,8 @@ async def run_orchestrator(user_message: str, state: SessionState) -> dict:
         label = label_user_turn(user_message, state)
 
     update_state_with_label(label, state)
+
+    classify_persona_turn(user_message, state)
 
     # Wire autonomy labels directly into user_has_engaged
     if label in ENGAGED_LABELS:

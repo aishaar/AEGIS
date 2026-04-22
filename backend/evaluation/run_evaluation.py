@@ -2,7 +2,7 @@ import requests
 import json
 import time
 import os
-from evaluation.personas import PASSIVE_PERSONA, ACTIVE_PERSONA, MIXED_PERSONA
+from evaluation.personas import PASSIVE_PERSONA, CURIOUS_PERSONA, CRITICAL_PERSONA
 
 BASE_URL = "http://localhost:8000"
 
@@ -68,10 +68,10 @@ def run_all_personas() -> dict:
     results["passive"] = run_persona("Passive User", PASSIVE_PERSONA)
     time.sleep(2)
 
-    results["active"] = run_persona("Active User", ACTIVE_PERSONA)
+    results["active"] = run_persona("Active User", CURIOUS_PERSONA)
     time.sleep(2)
 
-    results["mixed"] = run_persona("Mixed User", MIXED_PERSONA)
+    results["mixed"] = run_persona("Mixed User", CRITICAL_PERSONA)
 
     return results
 
