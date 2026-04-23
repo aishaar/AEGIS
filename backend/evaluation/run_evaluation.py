@@ -2,33 +2,51 @@ import requests
 import json
 import time
 import os
-from evaluation.personas import PASSIVE_PERSONA, ACTIVE_PERSONA, MIXED_PERSONA
+import uuid
+from personas import PASSIVE_PERSONA, CURIOUS_PERSONA, CRITICAL_PERSONA
 
 BASE_URL = "http://localhost:8000"
 
-def run_persona(persona_name: str, messages: list) -> dict:
+EVAL_USERNAME = "eval_user"
+EVAL_PASSWORD = "eval_password_123"
+
+
+def get_auth_token() -> str:
+    requests.post(f"{BASE_URL}/register", json={"username": EVAL_USERNAME, "password": EVAL_PASSWORD})
+
+    login_resp = requests.post(f"{BASE_URL}/login", json={"username": EVAL_USERNAME, "password": EVAL_PASSWORD})
+    if login_resp.status_code != 200:
+        raise RuntimeError(f"Login failed: {login_resp.text}")
+
+    token = login_resp.json()["access_token"]
+    print(f"Authenticated as '{EVAL_USERNAME}'")
+    return token
+
+
+def run_persona(persona_name: str, messages: list, token: str) -> dict:
     print(f"\n{'='*50}")
     print(f"Running persona: {persona_name}")
     print(f"{'='*50}")
 
-    session_id = None
+    headers = {"Authorization": f"Bearer {token}"}
+    session_id = str(uuid.uuid4())
     turn_results = []
 
     for i, message in enumerate(messages):
-        payload = {"message": message}
-        if session_id:
-            payload["session_id"] = session_id
+        payload = {"message": message, "session_id": session_id}
 
         try:
             response = requests.post(
                 f"{BASE_URL}/chat",
                 json=payload,
+                headers=headers,
                 timeout=30
             )
             data = response.json()
 
-            if not session_id:
-                session_id = data["session_id"]
+            if response.status_code != 200:
+                print(f"Error on turn {i+1}: HTTP {response.status_code} — {data}")
+                continue
 
             turn_result = {
                 "turn": data["turn"],
@@ -51,7 +69,7 @@ def run_persona(persona_name: str, messages: list) -> dict:
             print(f"Error on turn {i+1}: {e}")
             continue
 
-    report_response = requests.get(f"{BASE_URL}/report/{session_id}")
+    report_response = requests.get(f"{BASE_URL}/report/{session_id}", headers=headers)
     report = report_response.json()
 
     return {
@@ -62,16 +80,16 @@ def run_persona(persona_name: str, messages: list) -> dict:
     }
 
 
-def run_all_personas() -> dict:
+def run_all_personas(token: str) -> dict:
     results = {}
 
-    results["passive"] = run_persona("Passive User", PASSIVE_PERSONA)
+    results["passive"] = run_persona("Passive User", PASSIVE_PERSONA, token)
     time.sleep(2)
 
-    results["active"] = run_persona("Active User", ACTIVE_PERSONA)
+    results["active"] = run_persona("Active User", CURIOUS_PERSONA, token)
     time.sleep(2)
 
-    results["mixed"] = run_persona("Mixed User", MIXED_PERSONA)
+    results["mixed"] = run_persona("Mixed User", CRITICAL_PERSONA, token)
 
     return results
 
@@ -85,18 +103,21 @@ def save_results(results: dict) -> None:
 
 
 def print_summary(results: dict) -> None:
-    print(f"\n{'='*50}")
-    print("EVALUATION SUMMARY")
-    print(f"{'='*50}")
-
     for persona_name, data in results.items():
-        metrics = data["final_report"]["metrics"]
-        print(f"\n{persona_name.upper()} PERSONA:")
-        print(f"  RPI:              {metrics['rpi']}")
-        print(f"  SUR:              {metrics['sur']}")
-        print(f"  RAF:              {metrics['raf']}")
-        print(f"  Engagement:       {metrics['engagement_level']}")
-        print(f"  Interpretation:   {metrics['interpretation']}")
+        final_report = data["final_report"]
+        metrics = final_report.get("metrics", {})
+        persona_summary = final_report.get("persona_summary", {})
+
+        print(f"\nFINAL RESULT FOR {persona_name.upper()}")
+        print(f"session_id: {data['session_id']}")
+        print(f"dominant_persona: {persona_summary.get('dominant_persona', 'N/A')}")
+        print(f"final persona_scores: {persona_summary.get('persona_scores', {})}")
+        print(f"final overall_persona_score: {persona_summary.get('overall_persona_score', 'N/A')}")
+        print()
+        print("RPI / SUR / RAF")
+        print(f"RPI: {metrics.get('rpi', 'N/A')}")
+        print(f"SUR: {metrics.get('sur', 'N/A')}")
+        print(f"RAF: {metrics.get('raf', 'N/A')}")
 
 
 if __name__ == "__main__":
@@ -104,7 +125,8 @@ if __name__ == "__main__":
     print("Make sure uvicorn is running at http://localhost:8000")
     print()
 
-    results = run_all_personas()
+    token = get_auth_token()
+    results = run_all_personas(token)
     save_results(results)
     print_summary(results)
 

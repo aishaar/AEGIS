@@ -98,7 +98,11 @@ async def chat(req: ChatRequest, current_user: User = Depends(get_current_user))
             "scaffold_stage": state["scaffold_stage"],
             "passivity_alert": state["passivity_alert"],
             "turn_type": state["latest_turn_type"],
-            "rpi_events": state["rpi_events"]
+            "rpi_events": state["rpi_events"],
+            "persona_scores": state["persona_scores"],
+            "dominant_persona": state["dominant_persona"],
+            "overall_persona_score": state["overall_persona_score"],
+            "persona_turn_history": state["persona_turn_history"]
         }
     }
 
@@ -130,6 +134,12 @@ def get_report(session_id: str, current_user: User = Depends(get_current_user)):
         "session_id": session_id,
         "turn_count": state["turn_count"],
         "metrics": metrics,
+        "persona_summary": {
+            "persona_scores": state["persona_scores"],
+            "dominant_persona": state["dominant_persona"],
+            "overall_persona_score": state["overall_persona_score"],
+            "persona_turn_history": state["persona_turn_history"]
+        },
         "raw_events": {
             "rpi_events": state["rpi_events"],
             "reflection_events": state["reflection_events"],
