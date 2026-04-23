@@ -244,6 +244,13 @@ export default function Home() {
               History
             </Link>
 
+            <Link
+              href="/evaluation"
+              className="rounded-xl border border-[#059669] px-4 py-2 text-sm font-medium text-[#059669] hover:bg-[#ECFDF5]"
+            >
+              Evaluation Demo
+            </Link>
+
             {sessionId && (
               <Link
                 href={`/report?session=${sessionId}`}

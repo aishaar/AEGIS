@@ -1,0 +1,1879 @@
+{
+  "passive": {
+    "persona": "Passive User",
+    "session_id": "d4a6d971-fc3b-4c73-a366-9104de5df7a7",
+    "turn_results": [
+      {
+        "turn": 1,
+        "message": "ok",
+        "route_used": "welcome",
+        "scaffold_stage": 0,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "starting"
+      },
+      {
+        "turn": 2,
+        "message": "got it",
+        "route_used": "reflection",
+        "scaffold_stage": 0,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept"
+        ],
+        "engagement_level": "medium",
+        "scaffold_stage_label": "starting"
+      },
+      {
+        "turn": 3,
+        "message": "makes sense",
+        "route_used": "challenge",
+        "scaffold_stage": 0,
+        "passivity_alert": true,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "engagement_level": "low",
+        "scaffold_stage_label": "starting"
+      },
+      {
+        "turn": 4,
+        "message": "yes sure",
+        "route_used": "scaffolding",
+        "scaffold_stage": 1,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "engagement_level": "low",
+        "scaffold_stage_label": "exploring"
+      },
+      {
+        "turn": 5,
+        "message": "ok thanks",
+        "route_used": "reflection",
+        "scaffold_stage": 1,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "engagement_level": "low",
+        "scaffold_stage_label": "exploring"
+      },
+      {
+        "turn": 6,
+        "message": "i see",
+        "route_used": "challenge",
+        "scaffold_stage": 1,
+        "passivity_alert": true,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "engagement_level": "low",
+        "scaffold_stage_label": "exploring"
+      },
+      {
+        "turn": 7,
+        "message": "noted",
+        "route_used": "reflection",
+        "scaffold_stage": 1,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "engagement_level": "low",
+        "scaffold_stage_label": "exploring"
+      },
+      {
+        "turn": 8,
+        "message": "alright",
+        "route_used": "reflection",
+        "scaffold_stage": 1,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "engagement_level": "low",
+        "scaffold_stage_label": "exploring"
+      },
+      {
+        "turn": 9,
+        "message": "sure",
+        "route_used": "challenge",
+        "scaffold_stage": 1,
+        "passivity_alert": true,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "engagement_level": "low",
+        "scaffold_stage_label": "exploring"
+      },
+      {
+        "turn": 10,
+        "message": "ok great",
+        "route_used": "direct",
+        "scaffold_stage": 1,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "engagement_level": "low",
+        "scaffold_stage_label": "exploring"
+      },
+      {
+        "turn": 11,
+        "message": "yes",
+        "route_used": "reflection",
+        "scaffold_stage": 1,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "engagement_level": "low",
+        "scaffold_stage_label": "exploring"
+      },
+      {
+        "turn": 12,
+        "message": "done",
+        "route_used": "challenge",
+        "scaffold_stage": 1,
+        "passivity_alert": true,
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "engagement_level": "low",
+        "scaffold_stage_label": "exploring"
+      }
+    ],
+    "final_report": {
+      "session_id": "d4a6d971-fc3b-4c73-a366-9104de5df7a7",
+      "turn_count": 12,
+      "metrics": {
+        "rpi": 0.92,
+        "sur": 0.0,
+        "raf": 0.0,
+        "engagement_level": "low",
+        "scaffold_stage_label": "exploring",
+        "turn_count": 12,
+        "interpretation": "passive reliance detected \u2014 user is accepting outputs without reasoning"
+      },
+      "persona_summary": {
+        "persona_scores": {
+          "passive": 10.200000000000001,
+          "curious": 1.1400000000000001,
+          "critical": 0.6600000000000001
+        },
+        "dominant_persona": "passive",
+        "overall_persona_score": 0.103,
+        "persona_turn_history": [
+          {
+            "turn": 1,
+            "message": "ok",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.9,
+              "curious": 0.1,
+              "critical": 0.0
+            },
+            "turn_scores": {
+              "passive": 0.94,
+              "curious": 0.06,
+              "critical": 0.0
+            },
+            "normalized_scores": {
+              "passive": 0.94,
+              "curious": 0.06,
+              "critical": 0.0
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user is responding with minimal engagement, indicating acceptance without further inquiry or challenge."
+          },
+          {
+            "turn": 2,
+            "message": "got it",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.9,
+              "curious": 0.1,
+              "critical": 0.0
+            },
+            "turn_scores": {
+              "passive": 0.94,
+              "curious": 0.06,
+              "critical": 0.0
+            },
+            "normalized_scores": {
+              "passive": 0.94,
+              "curious": 0.06,
+              "critical": 0.0
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user acknowledges the AI's response with minimal engagement, indicating a passive interaction style."
+          },
+          {
+            "turn": 3,
+            "message": "makes sense",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.7,
+              "curious": 0.2,
+              "critical": 0.1
+            },
+            "turn_scores": {
+              "passive": 0.82,
+              "curious": 0.12,
+              "critical": 0.06
+            },
+            "normalized_scores": {
+              "passive": 0.9,
+              "curious": 0.08,
+              "critical": 0.02
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user acknowledges understanding but does not ask further questions or explore the topic, indicating a passive interaction style."
+          },
+          {
+            "turn": 4,
+            "message": "yes sure",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.6,
+              "curious": 0.2,
+              "critical": 0.2
+            },
+            "turn_scores": {
+              "passive": 0.76,
+              "curious": 0.12,
+              "critical": 0.12
+            },
+            "normalized_scores": {
+              "passive": 0.865,
+              "curious": 0.09,
+              "critical": 0.045
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user acknowledges the AI's prompt with a simple affirmative response, indicating a passive acceptance of the conversation without further exploration or challenge."
+          },
+          {
+            "turn": 5,
+            "message": "ok thanks",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.8,
+              "curious": 0.1,
+              "critical": 0.1
+            },
+            "turn_scores": {
+              "passive": 0.88,
+              "curious": 0.06,
+              "critical": 0.06
+            },
+            "normalized_scores": {
+              "passive": 0.868,
+              "curious": 0.084,
+              "critical": 0.048
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user acknowledges the response with a simple 'ok thanks', indicating acceptance without further inquiry or exploration."
+          },
+          {
+            "turn": 6,
+            "message": "i see",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.7,
+              "curious": 0.2,
+              "critical": 0.1
+            },
+            "turn_scores": {
+              "passive": 0.82,
+              "curious": 0.12,
+              "critical": 0.06
+            },
+            "normalized_scores": {
+              "passive": 0.86,
+              "curious": 0.09,
+              "critical": 0.05
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user acknowledges the response with a simple statement, indicating acceptance without further exploration or challenge."
+          },
+          {
+            "turn": 7,
+            "message": "noted",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.7,
+              "curious": 0.2,
+              "critical": 0.1
+            },
+            "turn_scores": {
+              "passive": 0.82,
+              "curious": 0.12,
+              "critical": 0.06
+            },
+            "normalized_scores": {
+              "passive": 0.854,
+              "curious": 0.094,
+              "critical": 0.051
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user acknowledges the previous response with a minimal comment, indicating a passive interaction style."
+          },
+          {
+            "turn": 8,
+            "message": "alright",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.8,
+              "curious": 0.1,
+              "critical": 0.1
+            },
+            "turn_scores": {
+              "passive": 0.88,
+              "curious": 0.06,
+              "critical": 0.06
+            },
+            "normalized_scores": {
+              "passive": 0.858,
+              "curious": 0.09,
+              "critical": 0.052
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user acknowledges the AI's prompts with minimal engagement, indicating a passive interaction style."
+          },
+          {
+            "turn": 9,
+            "message": "sure",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.7,
+              "curious": 0.2,
+              "critical": 0.1
+            },
+            "turn_scores": {
+              "passive": 0.82,
+              "curious": 0.12,
+              "critical": 0.06
+            },
+            "normalized_scores": {
+              "passive": 0.853,
+              "curious": 0.093,
+              "critical": 0.053
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user is responding with minimal engagement, indicating acceptance rather than exploration or challenge."
+          },
+          {
+            "turn": 10,
+            "message": "ok great",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.7,
+              "curious": 0.2,
+              "critical": 0.1
+            },
+            "turn_scores": {
+              "passive": 0.82,
+              "curious": 0.12,
+              "critical": 0.06
+            },
+            "normalized_scores": {
+              "passive": 0.85,
+              "curious": 0.096,
+              "critical": 0.054
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user is accepting the AI's prompts without further exploration or challenge, indicating a passive interaction style."
+          },
+          {
+            "turn": 11,
+            "message": "yes",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.8,
+              "curious": 0.1,
+              "critical": 0.1
+            },
+            "turn_scores": {
+              "passive": 0.88,
+              "curious": 0.06,
+              "critical": 0.06
+            },
+            "normalized_scores": {
+              "passive": 0.853,
+              "curious": 0.093,
+              "critical": 0.055
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user is primarily accepting the AI's responses with minimal engagement or follow-up questions, indicating a passive interaction style."
+          },
+          {
+            "turn": 12,
+            "message": "done",
+            "rule_scores": {
+              "passive": 1.0,
+              "curious": 0.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.7,
+              "curious": 0.2,
+              "critical": 0.1
+            },
+            "turn_scores": {
+              "passive": 0.82,
+              "curious": 0.12,
+              "critical": 0.06
+            },
+            "normalized_scores": {
+              "passive": 0.85,
+              "curious": 0.095,
+              "critical": 0.055
+            },
+            "dominant_persona": "passive",
+            "llm_reason": "The user acknowledges the previous response with a simple 'done', indicating acceptance without further exploration or challenge."
+          }
+        ]
+      },
+      "raw_events": {
+        "rpi_events": [
+          "informed_agreement",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept",
+          "passive_accept"
+        ],
+        "reflection_events": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "prompted"
+        ],
+        "transparency_events": [
+          {
+            "turn": 4,
+            "stage": 1,
+            "answer_ratio": 0.16,
+            "engagement_score": 0.0,
+            "user_engaged_before_hint": false
+          }
+        ]
+      }
+    }
+  },
+  "active": {
+    "persona": "Active User",
+    "session_id": "f3f87848-3d4a-442f-9d89-dcaed9a80d64",
+    "turn_results": [
+      {
+        "turn": 1,
+        "message": "Help me identify the gap in multi-agent AI systems research",
+        "route_used": "welcome",
+        "scaffold_stage": 0,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "starting"
+      },
+      {
+        "turn": 2,
+        "message": "What do frameworks like AutoGen and CrewAI mainly focus on",
+        "route_used": "scaffolding",
+        "scaffold_stage": 2,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "developing"
+      },
+      {
+        "turn": 3,
+        "message": "How do people usually evaluate whether these systems are successful",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 4,
+        "message": "What does over-reliance mean in this context",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 5,
+        "message": "How is that different from user engagement",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 6,
+        "message": "Would cognitive load theory be relevant here too",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 7,
+        "message": "What is germane cognitive load again",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 8,
+        "message": "How would scaffolding help with this kind of problem",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "attempt_reasoning"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 9,
+        "message": "What role would a transparency agent play",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 10,
+        "message": "How is autonomy preservation different from transparency",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 11,
+        "message": "Would reflection prompts also fit into this framework",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 12,
+        "message": "So would the contribution be about helping people think instead of just giving answers",
+        "route_used": "reflection",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning",
+          "informed_agreement"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      }
+    ],
+    "final_report": {
+      "session_id": "f3f87848-3d4a-442f-9d89-dcaed9a80d64",
+      "turn_count": 12,
+      "metrics": {
+        "rpi": 0.0,
+        "sur": 1.0,
+        "raf": 0.89,
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated",
+        "turn_count": 12,
+        "interpretation": "highly engaged \u2014 user is reasoning actively and challenging outputs"
+      },
+      "persona_summary": {
+        "persona_scores": {
+          "passive": 0.9130000000000003,
+          "curious": 8.879999999999999,
+          "critical": 2.207
+        },
+        "dominant_persona": "curious",
+        "overall_persona_score": 0.554,
+        "persona_turn_history": [
+          {
+            "turn": 1,
+            "message": "Help me identify the gap in multi-agent AI systems research",
+            "rule_scores": {
+              "passive": 0.333,
+              "curious": 0.333,
+              "critical": 0.334
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.193,
+              "curious": 0.493,
+              "critical": 0.314
+            },
+            "normalized_scores": {
+              "passive": 0.193,
+              "curious": 0.493,
+              "critical": 0.314
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is seeking to explore a specific area of research, indicating curiosity, but the request is somewhat passive as it does not challenge or probe the AI's previous responses."
+          },
+          {
+            "turn": 2,
+            "message": "What do frameworks like AutoGen and CrewAI mainly focus on",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.2,
+              "curious": 0.6,
+              "critical": 0.2
+            },
+            "turn_scores": {
+              "passive": 0.12,
+              "curious": 0.76,
+              "critical": 0.12
+            },
+            "normalized_scores": {
+              "passive": 0.157,
+              "curious": 0.627,
+              "critical": 0.217
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is asking a specific question about frameworks, indicating curiosity about their focus and functionality, but not challenging the AI's previous response."
+          },
+          {
+            "turn": 3,
+            "message": "How do people usually evaluate whether these systems are successful",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.76,
+              "critical": 0.18
+            },
+            "normalized_scores": {
+              "passive": 0.124,
+              "curious": 0.671,
+              "critical": 0.205
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is asking a broadening question about evaluation methods, indicating curiosity, but also implies a need for critical understanding of success metrics."
+          },
+          {
+            "turn": 4,
+            "message": "What does over-reliance mean in this context",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.76,
+              "critical": 0.18
+            },
+            "normalized_scores": {
+              "passive": 0.108,
+              "curious": 0.693,
+              "critical": 0.199
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is seeking clarification on a specific term, indicating curiosity about its meaning in the context of the discussion, while also showing a critical approach by probing for deeper understanding."
+          },
+          {
+            "turn": 5,
+            "message": "How is that different from user engagement",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.76,
+              "critical": 0.18
+            },
+            "normalized_scores": {
+              "passive": 0.099,
+              "curious": 0.707,
+              "critical": 0.195
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is asking a clarifying question that seeks to explore the differences between over-reliance and user engagement, indicating curiosity and a desire for deeper understanding."
+          },
+          {
+            "turn": 6,
+            "message": "Would cognitive load theory be relevant here too",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.7,
+              "critical": 0.2
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.82,
+              "critical": 0.12
+            },
+            "normalized_scores": {
+              "passive": 0.092,
+              "curious": 0.725,
+              "critical": 0.182
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is exploring a new idea related to cognitive load theory and its relevance, indicating curiosity and a desire to understand how it connects to the previous discussion."
+          },
+          {
+            "turn": 7,
+            "message": "What is germane cognitive load again",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.76,
+              "critical": 0.18
+            },
+            "normalized_scores": {
+              "passive": 0.088,
+              "curious": 0.73,
+              "critical": 0.182
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is asking for clarification on a specific concept, indicating curiosity and a desire to understand more about cognitive load theory."
+          },
+          {
+            "turn": 8,
+            "message": "How would scaffolding help with this kind of problem",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.76,
+              "critical": 0.18
+            },
+            "normalized_scores": {
+              "passive": 0.084,
+              "curious": 0.734,
+              "critical": 0.182
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is asking a broadening question about scaffolding and its relevance to the discussed problem, indicating curiosity and a desire to explore the topic further."
+          },
+          {
+            "turn": 9,
+            "message": "What role would a transparency agent play",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.76,
+              "critical": 0.18
+            },
+            "normalized_scores": {
+              "passive": 0.081,
+              "curious": 0.737,
+              "critical": 0.182
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is asking a broadening question about the role of a transparency agent, indicating curiosity and a desire to explore the topic further, while also potentially probing for specific details."
+          },
+          {
+            "turn": 10,
+            "message": "How is autonomy preservation different from transparency",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.7,
+              "critical": 0.2
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.82,
+              "critical": 0.12
+            },
+            "normalized_scores": {
+              "passive": 0.079,
+              "curious": 0.745,
+              "critical": 0.175
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is asking a clarifying question that explores the differences between two concepts, indicating curiosity and a desire to understand rather than challenging the AI's previous responses."
+          },
+          {
+            "turn": 11,
+            "message": "Would reflection prompts also fit into this framework",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.7,
+              "critical": 0.2
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.82,
+              "critical": 0.12
+            },
+            "normalized_scores": {
+              "passive": 0.078,
+              "curious": 0.752,
+              "critical": 0.17
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is exploring the concept of reflection prompts in relation to the previous discussion, indicating curiosity about how they fit into the framework of autonomy and transparency."
+          },
+          {
+            "turn": 12,
+            "message": "So would the contribution be about helping people think instead of just giving answers",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 0.467,
+              "critical": 0.533
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.7,
+              "critical": 0.2
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.607,
+              "critical": 0.333
+            },
+            "normalized_scores": {
+              "passive": 0.076,
+              "curious": 0.74,
+              "critical": 0.184
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is exploring the implications of the previous responses by asking a broadening question about the role of contributions in promoting critical thinking rather than just providing answers."
+          }
+        ]
+      },
+      "raw_events": {
+        "rpi_events": [
+          "informed_agreement",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "attempt_reasoning",
+          "clarification_request",
+          "clarification_request",
+          "attempt_reasoning",
+          "informed_agreement"
+        ],
+        "reflection_events": [
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "skipped",
+          "prompted"
+        ],
+        "transparency_events": [
+          {
+            "turn": 2,
+            "stage": 2,
+            "answer_ratio": 0.47,
+            "engagement_score": 0.65,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 3,
+            "stage": 3,
+            "answer_ratio": 0.6,
+            "engagement_score": 0.8,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 4,
+            "stage": 3,
+            "answer_ratio": 0.7,
+            "engagement_score": 0.9,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 5,
+            "stage": 3,
+            "answer_ratio": 0.8,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 6,
+            "stage": 3,
+            "answer_ratio": 0.84,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 7,
+            "stage": 3,
+            "answer_ratio": 0.85,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 8,
+            "stage": 3,
+            "answer_ratio": 0.85,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 9,
+            "stage": 3,
+            "answer_ratio": 0.85,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 10,
+            "stage": 3,
+            "answer_ratio": 0.85,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 11,
+            "stage": 3,
+            "answer_ratio": 0.85,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          }
+        ]
+      }
+    }
+  },
+  "mixed": {
+    "persona": "Mixed User",
+    "session_id": "9e35a8b8-4518-497e-b13e-f707918e9167",
+    "turn_results": [
+      {
+        "turn": 1,
+        "message": "Help me identify the gap in multi-agent AI systems research",
+        "route_used": "welcome",
+        "scaffold_stage": 0,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "starting"
+      },
+      {
+        "turn": 2,
+        "message": "Are you sure the main gap is over-reliance rather than task accuracy",
+        "route_used": "scaffolding",
+        "scaffold_stage": 2,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "developing"
+      },
+      {
+        "turn": 3,
+        "message": "What evidence supports the claim that current frameworks ignore human reasoning",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 4,
+        "message": "How do you know AutoGen and CrewAI do not already address this in some form",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request",
+          "challenge"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 5,
+        "message": "What exactly do you mean by reasoning process here",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request",
+          "challenge",
+          "clarification_request"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 6,
+        "message": "Is there a risk that scaffolding actually increases cognitive burden too much",
+        "route_used": "reflection",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request",
+          "challenge",
+          "clarification_request",
+          "attempt_reasoning"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 7,
+        "message": "Why should we assume that not answering directly is always better for learning",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request",
+          "challenge",
+          "clarification_request",
+          "attempt_reasoning",
+          "challenge"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 8,
+        "message": "Can you justify why autonomy preservation is different from just slowing the user down",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request",
+          "challenge",
+          "clarification_request",
+          "attempt_reasoning",
+          "challenge",
+          "attempt_reasoning"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 9,
+        "message": "What part of this argument is strongest and what part is still uncertain",
+        "route_used": "reflection",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request",
+          "challenge",
+          "clarification_request",
+          "attempt_reasoning",
+          "challenge",
+          "attempt_reasoning",
+          "attempt_reasoning"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 10,
+        "message": "How would you respond if someone argued that accuracy matters more than engagement",
+        "route_used": "reflection",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request",
+          "challenge",
+          "clarification_request",
+          "attempt_reasoning",
+          "challenge",
+          "attempt_reasoning",
+          "attempt_reasoning",
+          "attempt_reasoning"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 11,
+        "message": "What assumptions is this framework making about the user",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request",
+          "challenge",
+          "clarification_request",
+          "attempt_reasoning",
+          "challenge",
+          "attempt_reasoning",
+          "attempt_reasoning",
+          "attempt_reasoning",
+          "attempt_reasoning"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      },
+      {
+        "turn": 12,
+        "message": "So what would be the clearest limitation of this contribution",
+        "route_used": "scaffolding",
+        "scaffold_stage": 3,
+        "passivity_alert": false,
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request",
+          "challenge",
+          "clarification_request",
+          "attempt_reasoning",
+          "challenge",
+          "attempt_reasoning",
+          "attempt_reasoning",
+          "attempt_reasoning",
+          "attempt_reasoning",
+          "attempt_reasoning"
+        ],
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated"
+      }
+    ],
+    "final_report": {
+      "session_id": "9e35a8b8-4518-497e-b13e-f707918e9167",
+      "turn_count": 12,
+      "metrics": {
+        "rpi": 0.0,
+        "sur": 1.0,
+        "raf": 1.0,
+        "engagement_level": "high",
+        "scaffold_stage_label": "consolidated",
+        "turn_count": 12,
+        "interpretation": "highly engaged \u2014 user is reasoning actively and challenging outputs"
+      },
+      "persona_summary": {
+        "persona_scores": {
+          "passive": 1.0310000000000004,
+          "curious": 5.359999999999999,
+          "critical": 5.609
+        },
+        "dominant_persona": "critical",
+        "overall_persona_score": 0.691,
+        "persona_turn_history": [
+          {
+            "turn": 1,
+            "message": "Help me identify the gap in multi-agent AI systems research",
+            "rule_scores": {
+              "passive": 0.333,
+              "curious": 0.333,
+              "critical": 0.334
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.7,
+              "critical": 0.2
+            },
+            "turn_scores": {
+              "passive": 0.193,
+              "curious": 0.553,
+              "critical": 0.254
+            },
+            "normalized_scores": {
+              "passive": 0.193,
+              "curious": 0.553,
+              "critical": 0.254
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is actively seeking to explore and understand a specific area of research, indicating curiosity, but does not challenge the AI's capabilities or responses."
+          },
+          {
+            "turn": 2,
+            "message": "Are you sure the main gap is over-reliance rather than task accuracy",
+            "rule_scores": {
+              "passive": 0.444,
+              "curious": 0.0,
+              "critical": 0.556
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.3,
+              "critical": 0.6
+            },
+            "turn_scores": {
+              "passive": 0.238,
+              "curious": 0.18,
+              "critical": 0.582
+            },
+            "normalized_scores": {
+              "passive": 0.215,
+              "curious": 0.367,
+              "critical": 0.418
+            },
+            "dominant_persona": "critical",
+            "llm_reason": "The user is challenging the AI's assertion about the main gap in multi-agent AI systems research, indicating a critical interaction style."
+          },
+          {
+            "turn": 3,
+            "message": "What evidence supports the claim that current frameworks ignore human reasoning",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 0.0,
+              "critical": 1.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.3,
+              "critical": 0.6
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.18,
+              "critical": 0.76
+            },
+            "normalized_scores": {
+              "passive": 0.164,
+              "curious": 0.304,
+              "critical": 0.532
+            },
+            "dominant_persona": "critical",
+            "llm_reason": "The user is probing for evidence and challenging the claim about current frameworks, indicating a critical interaction style."
+          },
+          {
+            "turn": 4,
+            "message": "How do you know AutoGen and CrewAI do not already address this in some form",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 0.0,
+              "critical": 1.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.3,
+              "critical": 0.6
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.18,
+              "critical": 0.76
+            },
+            "normalized_scores": {
+              "passive": 0.138,
+              "curious": 0.273,
+              "critical": 0.589
+            },
+            "dominant_persona": "critical",
+            "llm_reason": "The user is critically questioning the AI's assumptions about the capabilities of specific frameworks (AutoGen and CrewAI) and is seeking evidence or clarification on their effectiveness in addressing the integration of human reasoning."
+          },
+          {
+            "turn": 5,
+            "message": "What exactly do you mean by reasoning process here",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.76,
+              "critical": 0.18
+            },
+            "normalized_scores": {
+              "passive": 0.122,
+              "curious": 0.371,
+              "critical": 0.507
+            },
+            "dominant_persona": "critical",
+            "llm_reason": "The user is seeking clarification on the term 'reasoning process,' indicating curiosity about the concept rather than challenging the AI's previous responses."
+          },
+          {
+            "turn": 6,
+            "message": "Is there a risk that scaffolding actually increases cognitive burden too much",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.76,
+              "critical": 0.18
+            },
+            "normalized_scores": {
+              "passive": 0.112,
+              "curious": 0.435,
+              "critical": 0.453
+            },
+            "dominant_persona": "critical",
+            "llm_reason": "The user is exploring a potential downside of scaffolding, indicating curiosity about its effects on cognitive load while also critically assessing its implications."
+          },
+          {
+            "turn": 7,
+            "message": "Why should we assume that not answering directly is always better for learning",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 0.0,
+              "critical": 1.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.36,
+              "critical": 0.58
+            },
+            "normalized_scores": {
+              "passive": 0.104,
+              "curious": 0.425,
+              "critical": 0.471
+            },
+            "dominant_persona": "critical",
+            "llm_reason": "The user is questioning the assumption about indirect answers being better for learning, indicating a critical engagement with the topic while also exploring the reasoning behind it."
+          },
+          {
+            "turn": 8,
+            "message": "Can you justify why autonomy preservation is different from just slowing the user down",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 0.0,
+              "critical": 1.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.36,
+              "critical": 0.58
+            },
+            "normalized_scores": {
+              "passive": 0.099,
+              "curious": 0.417,
+              "critical": 0.485
+            },
+            "dominant_persona": "critical",
+            "llm_reason": "The user is asking for justification and clarification on a specific concept, indicating a desire to understand the nuances rather than simply accepting information."
+          },
+          {
+            "turn": 9,
+            "message": "What part of this argument is strongest and what part is still uncertain",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 0.6,
+              "critical": 0.4
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.6,
+              "critical": 0.34
+            },
+            "normalized_scores": {
+              "passive": 0.095,
+              "curious": 0.437,
+              "critical": 0.468
+            },
+            "dominant_persona": "critical",
+            "llm_reason": "The user is actively seeking to understand the strengths and uncertainties in the argument, indicating curiosity and a critical approach to evaluating the response."
+          },
+          {
+            "turn": 10,
+            "message": "How would you respond if someone argued that accuracy matters more than engagement",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 1.0,
+              "critical": 0.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.4,
+              "critical": 0.5
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.64,
+              "critical": 0.3
+            },
+            "normalized_scores": {
+              "passive": 0.091,
+              "curious": 0.457,
+              "critical": 0.452
+            },
+            "dominant_persona": "curious",
+            "llm_reason": "The user is probing the argument by asking how to respond to a counterpoint, indicating a critical engagement with the topic."
+          },
+          {
+            "turn": 11,
+            "message": "What assumptions is this framework making about the user",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 0.0,
+              "critical": 1.0
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.6,
+              "critical": 0.3
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.36,
+              "critical": 0.58
+            },
+            "normalized_scores": {
+              "passive": 0.088,
+              "curious": 0.448,
+              "critical": 0.463
+            },
+            "dominant_persona": "critical",
+            "llm_reason": "The user is exploring the assumptions of the framework, indicating curiosity about its implications and seeking deeper understanding, while also showing some critical engagement with the content."
+          },
+          {
+            "turn": 12,
+            "message": "So what would be the clearest limitation of this contribution",
+            "rule_scores": {
+              "passive": 0.0,
+              "curious": 0.467,
+              "critical": 0.533
+            },
+            "llm_scores": {
+              "passive": 0.1,
+              "curious": 0.4,
+              "critical": 0.5
+            },
+            "turn_scores": {
+              "passive": 0.06,
+              "curious": 0.427,
+              "critical": 0.513
+            },
+            "normalized_scores": {
+              "passive": 0.086,
+              "curious": 0.447,
+              "critical": 0.467
+            },
+            "dominant_persona": "critical",
+            "llm_reason": "The user is asking for a specific limitation, indicating a critical engagement with the previous response and seeking to challenge or probe deeper into the argument presented."
+          }
+        ]
+      },
+      "raw_events": {
+        "rpi_events": [
+          "informed_agreement",
+          "challenge",
+          "clarification_request",
+          "challenge",
+          "clarification_request",
+          "attempt_reasoning",
+          "challenge",
+          "attempt_reasoning",
+          "attempt_reasoning",
+          "attempt_reasoning",
+          "attempt_reasoning",
+          "attempt_reasoning"
+        ],
+        "reflection_events": [
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "engaged",
+          "prompted"
+        ],
+        "transparency_events": [
+          {
+            "turn": 2,
+            "stage": 2,
+            "answer_ratio": 0.53,
+            "engagement_score": 0.75,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 3,
+            "stage": 3,
+            "answer_ratio": 0.63,
+            "engagement_score": 0.85,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 4,
+            "stage": 3,
+            "answer_ratio": 0.76,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 5,
+            "stage": 3,
+            "answer_ratio": 0.8,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 7,
+            "stage": 3,
+            "answer_ratio": 0.85,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 8,
+            "stage": 3,
+            "answer_ratio": 0.85,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 11,
+            "stage": 3,
+            "answer_ratio": 0.85,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          },
+          {
+            "turn": 12,
+            "stage": 3,
+            "answer_ratio": 0.85,
+            "engagement_score": 1.0,
+            "user_engaged_before_hint": true
+          }
+        ]
+      }
+    }
+  }
+}

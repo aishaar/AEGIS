@@ -2,7 +2,7 @@ from openai import OpenAI
 import os
 from core.state import SessionState
 from dotenv import load_dotenv
-# from agents.reflection import should_trigger_reflection, record_reflection_response  # reflection disabled
+from agents.reflection import should_trigger_reflection, record_reflection_response
 from core.assembler import assemble_response
 from agents.persona_classifier import classify_persona_turn
 
@@ -107,6 +107,10 @@ async def run_orchestrator(user_message: str, state: SessionState) -> dict:
     else:
         label = label_user_turn(user_message, state)
 
+    # Record whether the user engaged with the reflection prompt shown last turn
+    if "prompted" in state["reflection_events"]:
+        record_reflection_response(label in ENGAGED_LABELS, state)
+
     update_state_with_label(label, state)
 
     classify_persona_turn(user_message, state)
@@ -160,7 +164,7 @@ async def run_orchestrator(user_message: str, state: SessionState) -> dict:
     route = determine_route(turn_type, state)
     response = await execute_route(route, user_message, state)
     state["last_route"] = route
-    state["need_reflection"] = False  # reflection disabled — circle back later
+    state["need_reflection"] = should_trigger_reflection(state)
 
     return response
 
@@ -176,9 +180,8 @@ def determine_route(turn_type: str, state: SessionState) -> str:
     if turn_type == "task_execution":
         return "direct"
 
-    # reflection disabled — route reflection turns through scaffolding for now
-    # if turn_type == "reflection":
-    #     return "reflection"
+    if turn_type == "reflection":
+        return "reflection"
 
     # knowledge_seeking / decision_making: always go through scaffolding
     # The scaffolding agent uses engagement_score to blend Socratic vs. direct answer
@@ -194,7 +197,7 @@ async def execute_route(
     from agents.scaffolding import run_scaffolding
     from agents.transparency import run_transparency
     from agents.autonomy import run_autonomy
-    # from agents.reflection import run_reflection  # reflection disabled
+    from agents.reflection import run_reflection
 
     main_response = ""
     transparency = None
@@ -292,15 +295,15 @@ async def execute_route(
         )
         main_response = resp.choices[0].message.content
 
-    # elif route == "reflection":  # reflection disabled
-    #     ref_out = run_reflection(state)
-    #     main_response = ref_out["reflection_prompt"]
-    #     reflection = ref_out
+    elif route == "reflection":
+        ref_out = run_reflection(state)
+        main_response = ref_out["reflection_prompt"]
+        reflection = ref_out
 
     transparency = await run_transparency(user_message, main_response, state)
 
-    # if state["need_reflection"] and route != "reflection":  # reflection disabled
-    #     reflection = run_reflection(state)
+    if state["need_reflection"] and route != "reflection":
+        reflection = run_reflection(state)
 
     return assemble_response(
         main_response=main_response,
