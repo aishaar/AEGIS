@@ -45,7 +45,7 @@ function MetricBar({
   const barColor = invert ? "bg-[#F87171]" : "bg-[#34D399]";
 
   return (
-    <div className="rounded-xl bg-white p-4 border border-[#BBF7D0]">
+    <div className="rounded-xl bg-[#F9FAFB] p-4 border border-[#E5E7EB]">
       <div className="flex items-center justify-between mb-1">
         <span className="text-sm font-semibold text-[#6D28D9]">{label}</span>
         <span className="text-sm font-bold text-[#374151]">
@@ -53,7 +53,7 @@ function MetricBar({
         </span>
       </div>
       <p className="text-xs text-[#9CA3AF] mb-2">{desc}</p>
-      <div className="h-2 w-full rounded-full bg-[#F3F4F6]">
+      <div className="h-2 w-full rounded-full bg-[#E5E7EB]">
         {pct !== null && (
           <div
             className={`h-2 rounded-full transition-all duration-700 ${barColor}`}
@@ -74,15 +74,22 @@ export default function EvaluationPage() {
   const [progress, setProgress] = useState(0);
   const [total, setTotal] = useState(0);
   const [error, setError] = useState<string | null>(null);
-  const chatEndRef = useRef<HTMLDivElement>(null);
+
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     if (!token) window.location.href = "/login";
   }, []);
 
+  // Smart scroll — only follows new messages if user is already near the bottom
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = chatContainerRef.current;
+    if (!el) return;
+    const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight;
+    if (distanceFromBottom < 120) {
+      el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    }
   }, [messages, typing]);
 
   const runSimulation = async (persona: PersonaKey) => {
@@ -122,9 +129,7 @@ export default function EvaluationPage() {
           body: JSON.stringify({ message, session_id: sid }),
         });
 
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
-        }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const data = await res.json();
         setTyping(false);
@@ -175,26 +180,26 @@ export default function EvaluationPage() {
   const personaBarColor: Record<string, string> = {
     passive:  "bg-[#A78BFA]",
     curious:  "bg-[#34D399]",
-    critical: "bg-[#6D28D9]",
+    critical: "bg-[#7C3AED]",
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F8FF] text-[#374151]">
+    <div className="min-h-screen bg-[#0F0B1E] text-white">
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col p-6">
 
         {/* Header */}
         <header className="mb-6 flex items-start justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-[#6D28D9]">AEGIS</h1>
-            <p className="text-xs font-medium tracking-widest text-[#6D28D9] uppercase mt-0.5">
+            <h1 className="text-3xl font-bold text-[#C4B5FD]">AEGIS</h1>
+            <p className="text-xs font-medium tracking-widest text-[#A78BFA] uppercase mt-0.5">
               Adaptive Engine for Guided Intelligent Scaffolding
             </p>
-            <p className="mt-1 text-sm italic text-[#888780]">Evaluation Demo</p>
+            <p className="mt-1 text-sm italic text-[#6EE7B7]">Evaluation Demo</p>
           </div>
           <div className="flex items-center gap-3">
             <Link
               href="/"
-              className="rounded-xl border border-[#6D28D9] px-4 py-2 text-sm font-medium text-[#6D28D9] hover:bg-[#EDE9FE]"
+              className="rounded-xl border border-[#4C1D95] px-4 py-2 text-sm font-medium text-[#C4B5FD] hover:bg-[#1E1635]"
             >
               Back to Chat
             </Link>
@@ -203,7 +208,7 @@ export default function EvaluationPage() {
                 localStorage.clear();
                 window.location.href = "/login";
               }}
-              className="rounded-xl bg-[#6D28D9] px-4 py-2 text-sm font-medium text-white hover:opacity-90"
+              className="rounded-xl bg-[#4C1D95] px-4 py-2 text-sm font-medium text-white hover:bg-[#5B21B6]"
             >
               Logout
             </button>
@@ -211,7 +216,7 @@ export default function EvaluationPage() {
         </header>
 
         {error && (
-          <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          <div className="mb-4 rounded-xl border border-red-800 bg-red-950 px-4 py-3 text-sm text-red-300">
             {error}
           </div>
         )}
@@ -220,10 +225,10 @@ export default function EvaluationPage() {
 
           {/* Left: Persona picker */}
           <aside className="w-72 shrink-0 flex flex-col gap-4">
-            <div className="rounded-2xl bg-white p-4 shadow-sm border border-[#DDD6FE]">
-              <h2 className="text-base font-semibold text-[#6D28D9]">Simulation Personas</h2>
-              <p className="mt-1 text-xs text-[#9CA3AF]">
-                Pick a persona to auto-play a full 12-turn conversation and see how AEGIS adapts.
+            <div className="rounded-2xl bg-[#1A1630] p-4 border border-[#2D1F5E]">
+              <h2 className="text-base font-semibold text-[#C4B5FD]">Simulation Personas</h2>
+              <p className="mt-1 text-xs text-[#6B7280]">
+                Pick a persona to auto-play a full 12-turn conversation and watch how AEGIS adapts.
               </p>
             </div>
 
@@ -243,34 +248,39 @@ export default function EvaluationPage() {
 
             {/* Progress bar */}
             {running && (
-              <div className="rounded-xl bg-white border border-[#BBF7D0] px-4 py-2 shadow-sm flex items-center gap-3">
-                <span className="text-xs text-[#059669] font-medium">
+              <div className="rounded-xl bg-[#1A2820] border border-[#2D4A38] px-4 py-2 flex items-center gap-3">
+                <span className="text-xs text-[#6EE7B7] font-medium">
                   Turn {progress} / {total}
                 </span>
-                <div className="flex-1 h-2 rounded-full bg-[#D1FAE5]">
+                <div className="flex-1 h-2 rounded-full bg-[#0D1F15]">
                   <div
-                    className="h-2 rounded-full bg-[#059669] transition-all duration-500"
+                    className="h-2 rounded-full bg-[#34D399] transition-all duration-500"
                     style={{ width: `${total ? (progress / total) * 100 : 0}%` }}
                   />
                 </div>
-                <span className="text-xs text-[#9CA3AF]">simulating…</span>
+                <span className="text-xs text-[#4B5563]">simulating…</span>
               </div>
             )}
 
             {/* Chat window */}
-            <div className="flex-1 rounded-2xl bg-white border border-[#BBF7D0] shadow-sm flex flex-col overflow-hidden"
-              style={{ minHeight: "380px", maxHeight: "520px" }}>
+            <div
+              className="flex-1 rounded-2xl bg-white border border-[#E5E7EB] flex flex-col overflow-hidden shadow-lg"
+              style={{ minHeight: "380px", maxHeight: "520px" }}
+            >
               {messages.length === 0 && !running ? (
-                <div className="flex flex-1 flex-col items-center justify-center gap-3 text-[#9CA3AF] p-8">
+                <div className="flex flex-1 flex-col items-center justify-center gap-3 p-8">
                   <span className="text-4xl">🤖</span>
-                  <p className="text-sm text-center">
+                  <p className="text-sm text-center text-[#9CA3AF]">
                     Select a persona on the left and click{" "}
                     <span className="font-medium text-[#6D28D9]">Run Simulation</span> to
                     watch the conversation unfold.
                   </p>
                 </div>
               ) : (
-                <div className="flex-1 overflow-y-auto p-4 space-y-3">
+                <div
+                  ref={chatContainerRef}
+                  className="flex-1 overflow-y-auto p-4 space-y-3"
+                >
                   {messages.map((msg) => (
                     <SimulationMessage key={msg.id} message={msg} />
                   ))}
@@ -285,35 +295,29 @@ export default function EvaluationPage() {
                       AEGIS is thinking…
                     </div>
                   )}
-                  <div ref={chatEndRef} />
                 </div>
               )}
             </div>
 
             {/* Final scores */}
             {report && (
-              <div className="rounded-2xl bg-[#ECFDF5] border border-[#A7F3D0] p-5 shadow-sm">
+              <div className="rounded-2xl bg-white border border-[#E5E7EB] p-5 shadow-lg">
                 <h3 className="text-base font-semibold text-[#065F46] mb-4">
                   Final Evaluation Results
                 </h3>
 
                 {/* Top summary row */}
                 <div className="grid grid-cols-3 gap-3 mb-4">
-                  <div className="rounded-xl bg-white p-4 border border-[#BBF7D0] col-span-1">
+                  <div className="rounded-xl bg-[#F5F3FF] p-4 border border-[#DDD6FE]">
                     <p className="text-xs text-[#9CA3AF] uppercase tracking-wide mb-1">
                       Dominant Persona
                     </p>
-                    <p
-                      className={`text-xl font-bold capitalize ${
-                        dominantColor[report.persona_summary?.dominant_persona] ??
-                        "text-[#374151]"
-                      }`}
-                    >
+                    <p className={`text-xl font-bold capitalize ${dominantColor[report.persona_summary?.dominant_persona] ?? "text-[#374151]"}`}>
                       {report.persona_summary?.dominant_persona ?? "—"}
                     </p>
                   </div>
 
-                  <div className="rounded-xl bg-white p-4 border border-[#BBF7D0] col-span-1">
+                  <div className="rounded-xl bg-[#ECFDF5] p-4 border border-[#A7F3D0]">
                     <p className="text-xs text-[#9CA3AF] uppercase tracking-wide mb-1">
                       Overall Score
                     </p>
@@ -322,19 +326,15 @@ export default function EvaluationPage() {
                     </p>
                   </div>
 
-                  <div className="rounded-xl bg-white p-4 border border-[#BBF7D0] col-span-1">
+                  <div className="rounded-xl bg-[#F5F3FF] p-4 border border-[#DDD6FE]">
                     <p className="text-xs text-[#9CA3AF] uppercase tracking-wide mb-1">
                       Engagement
                     </p>
-                    <p
-                      className={`text-xl font-bold capitalize ${
-                        report.metrics.engagement_level === "high"
-                          ? "text-[#059669]"
-                          : report.metrics.engagement_level === "medium"
-                          ? "text-[#D97706]"
-                          : "text-[#DC2626]"
-                      }`}
-                    >
+                    <p className={`text-xl font-bold capitalize ${
+                      report.metrics.engagement_level === "high"   ? "text-[#059669]"
+                      : report.metrics.engagement_level === "medium" ? "text-[#D97706]"
+                      : "text-[#DC2626]"
+                    }`}>
                       {report.metrics.engagement_level}
                     </p>
                   </div>
@@ -342,18 +342,16 @@ export default function EvaluationPage() {
 
                 {/* Persona score breakdown */}
                 {report.persona_summary?.persona_scores && (
-                  <div className="rounded-xl bg-white p-4 border border-[#BBF7D0] mb-4">
+                  <div className="rounded-xl bg-[#F9FAFB] p-4 border border-[#E5E7EB] mb-4">
                     <p className="text-xs text-[#9CA3AF] uppercase tracking-wide mb-3">
                       Persona Score Breakdown
                     </p>
                     {Object.entries(report.persona_summary.persona_scores).map(([k, v]) => (
                       <div key={k} className="flex items-center gap-3 mb-2 last:mb-0">
                         <span className="w-16 text-sm capitalize text-[#374151]">{k}</span>
-                        <div className="flex-1 h-2 rounded-full bg-[#F3F4F6]">
+                        <div className="flex-1 h-2 rounded-full bg-[#E5E7EB]">
                           <div
-                            className={`h-2 rounded-full transition-all duration-700 ${
-                              personaBarColor[k] ?? "bg-[#A78BFA]"
-                            }`}
+                            className={`h-2 rounded-full transition-all duration-700 ${personaBarColor[k] ?? "bg-[#A78BFA]"}`}
                             style={{ width: `${Math.min(100, (v / 12) * 100)}%` }}
                           />
                         </div>
