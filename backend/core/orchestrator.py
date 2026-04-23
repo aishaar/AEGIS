@@ -2,7 +2,7 @@ from openai import OpenAI
 import os
 from core.state import SessionState
 from dotenv import load_dotenv
-# from agents.reflection import should_trigger_reflection, record_reflection_response  # reflection disabled
+from agents.reflection import should_trigger_reflection
 from core.assembler import assemble_response
 from agents.persona_classifier import classify_persona_turn
 
@@ -96,6 +96,7 @@ def _build_context_block(state: SessionState) -> str:
 
 async def run_orchestrator(user_message: str, state: SessionState) -> dict:
     from agents.autonomy import label_user_turn, update_state_with_label
+    from agents.reflection import record_reflection_response
 
     # Fix 1 — capture anchor on turn 1 only if it's a real learning goal, not a greeting
     if state["turn_count"] == 1 and not state["anchor_question"] and not _is_greeting(user_message):
@@ -108,6 +109,10 @@ async def run_orchestrator(user_message: str, state: SessionState) -> dict:
         label = label_user_turn(user_message, state)
 
     update_state_with_label(label, state)
+
+    if state["last_route"] == "reflection":
+        engaged = detect_engagement(user_message)
+        record_reflection_response(engaged, state)
 
     classify_persona_turn(user_message, state)
 
@@ -157,10 +162,10 @@ async def run_orchestrator(user_message: str, state: SessionState) -> dict:
     ):
         state["anchor_question"] = user_message
 
+    state["need_reflection"] = should_trigger_reflection(state)
     route = determine_route(turn_type, state)
     response = await execute_route(route, user_message, state)
-    state["last_route"] = route
-    state["need_reflection"] = False  # reflection disabled — circle back later
+    state["last_route"] = route  # reflection disabled — circle back later
 
     return response
 
@@ -171,14 +176,17 @@ def determine_route(turn_type: str, state: SessionState) -> str:
 
     if state["passivity_alert"]:
         return "challenge"
+    
+    if state["need_reflection"]:
+        return "reflection"
 
     # task_execution: user wants something produced — answer directly
     if turn_type == "task_execution":
         return "direct"
 
     # reflection disabled — route reflection turns through scaffolding for now
-    # if turn_type == "reflection":
-    #     return "reflection"
+    if turn_type == "reflection":
+        return "reflection"
 
     # knowledge_seeking / decision_making: always go through scaffolding
     # The scaffolding agent uses engagement_score to blend Socratic vs. direct answer
@@ -194,7 +202,7 @@ async def execute_route(
     from agents.scaffolding import run_scaffolding
     from agents.transparency import run_transparency
     from agents.autonomy import run_autonomy
-    # from agents.reflection import run_reflection  # reflection disabled
+    from agents.reflection import run_reflection
 
     main_response = ""
     transparency = None
@@ -292,11 +300,10 @@ async def execute_route(
         )
         main_response = resp.choices[0].message.content
 
-    # elif route == "reflection":  # reflection disabled
-    #     ref_out = run_reflection(state)
-    #     main_response = ref_out["reflection_prompt"]
-    #     reflection = ref_out
-
+    elif route == "reflection":
+        ref_out = run_reflection(state)
+        main_response = ref_out["reflection_prompt"]
+        reflection = ref_out
     transparency = await run_transparency(user_message, main_response, state)
 
     # if state["need_reflection"] and route != "reflection":  # reflection disabled
